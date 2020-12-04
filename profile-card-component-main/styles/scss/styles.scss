@@ -1,0 +1,138 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --dark-cyan: hsl(185, 75%, 39%);
+  --vdark-blue: hsl(229, 23%, 23%);
+  --dark-gray-blue: hsl(227, 10%, 46%);
+  --dark-gray: hsl(0, 0%, 59%);
+  --font-size: 18px;
+}
+
+html {
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: var(--font-size);
+}
+
+body {
+  height: 100vh;
+  background: no-repeat url('../../images/bg-pattern-top.svg'), no-repeat url('../../images/bg-pattern-bottom.svg');
+  // these bg images are fuuuuu 
+  background-position: top calc(-50vh) left calc(100% - 50vw), 50vw 50vh;
+
+  background-color: var(--dark-cyan);
+  color: var(--vdark-blue);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-secondary {
+  color: var(--dark-gray);
+}
+
+.card {
+  min-height: 374px;
+  width: clamp(325px, 50vw, 350px);
+  margin-left: 1rem;
+  margin-right: 1rem;
+  background: no-repeat top url('../../images/bg-pattern-card.svg');
+  background-color: white;
+  border-radius: 15px;
+  padding-top: 87px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  &__top {
+    flex: 1;
+  }
+
+  &__image {
+    border-radius: 50%;
+
+    img {
+      border: 5px solid white;
+      border-radius: inherit;
+    }
+  }
+
+  &__profile {
+    margin-top: 18px;
+  }
+
+  &__name {
+    display: inline;
+    font-size: var(--font-size);
+    font-weight: bold;
+    margin-right: 2px;
+  }
+
+  &__age {
+    position: relative;
+    left: 3px;
+  }
+
+  &__location {
+    font-size: 14px;
+    margin-top: 11px;
+  }
+
+  &__stats {
+    border-top: 1px solid lightgray;
+    width: 100%;
+    padding: 28px 0 24px;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-evenly;
+
+    div {
+      text-align: center;
+    }
+
+    p {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      margin-top: 6px;
+    }    
+  }
+
+  animation: 0.5s ease-in fadeIn;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.attribution { 
+  --bg: rgba(81, 106, 115, 0.5);
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--bg);
+  font-size: 11px;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  a {
+    color: #bbb;
+    &:hover {
+      color: #fff;
+    }
+  }
+}
