@@ -20,7 +20,6 @@ html {
 body {
   height: 100vh;
   background: no-repeat url('../../images/bg-pattern-top.svg'), no-repeat url('../../images/bg-pattern-bottom.svg');
-  // these bg images are fuuuuu 
   background-position: top calc(-50vh) left calc(100% - 50vw), 50vw 50vh;
 
   background-color: var(--dark-cyan);
@@ -29,6 +28,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media screen and (max-width: 499px) {
+    background-position: top calc(-55vh) left calc(100% - 45vw), 45vw 50vh;
+    background-size: cover;
+  }
 }
 
 .text-secondary {
