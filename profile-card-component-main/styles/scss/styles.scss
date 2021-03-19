@@ -19,7 +19,7 @@ html {
 
 body {
   height: 100vh;
-  background: no-repeat url('../../images/bg-pattern-top.svg'), no-repeat url('../../images/bg-pattern-bottom.svg');
+  background: no-repeat url('../images/bg-pattern-top.svg'), no-repeat url('../images/bg-pattern-bottom.svg');
   background-position: top calc(-50vh) left calc(100% - 50vw), 50vw 50vh;
 
   background-color: var(--dark-cyan);
@@ -44,7 +44,7 @@ body {
   width: clamp(325px, 50vw, 350px);
   margin-left: 1rem;
   margin-right: 1rem;
-  background: no-repeat top url('../../images/bg-pattern-card.svg');
+  background: no-repeat top url('../images/bg-pattern-card.svg');
   background-color: white;
   border-radius: 15px;
   padding-top: 87px;
