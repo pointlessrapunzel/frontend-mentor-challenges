@@ -44,29 +44,16 @@ body {
   padding: 40px 0 60px 0;
 }
 
-.card::before {
-  content: '';
-  height: 200px;
-  width: 100%;
-  position: absolute;
-  top: -108px;
-  left: 16px;
-
-  background-image: url('../images/illustration-woman-online-mobile.svg');
-  background-repeat: no-repeat;
-
-  filter: drop-shadow(0px 30px 0 #f0f0fc);
-}
-
 .card {
   min-height: 535px;
-  width: 327px; // CHANGE
+  width: 90%;
+  max-width: 327px;
   position: relative;
   background-color: white;
   border-radius: 23px;
   font-size: 1.2rem;
   color: var(--dark-grayish-blue);
-  box-shadow: 0px 40px 40px -20px rgba(0,0,0,.4);
+  box-shadow: 0px 40px 40px -20px rgba(0, 0, 0, 0.4);
 
   margin-top: 108px;
   padding: 136px 23px 44px 24px;
@@ -85,19 +72,19 @@ body {
     margin-bottom: 19px;
 
     border-bottom: 1px solid var(--light-grayish-blue);
-    letter-spacing: .05px;
+    letter-spacing: 0.05px;
     line-height: 1.5;
 
     &:last-of-type {
       margin-bottom: 0;
     }
-    
 
     summary {
       font-size: 1.3rem;
       line-height: 1.2;
       color: var(--vdark-grayish-blue);
-      
+      transition: color 0.1s;
+
       cursor: pointer;
       width: 100%;
       padding: 0 1px;
@@ -106,7 +93,7 @@ body {
         content: ' ';
         width: 10px;
         height: 10px;
-        position: absolute; 
+        position: absolute;
         background-image: url(../../images/icon-arrow-down.svg);
         background-repeat: no-repeat;
         top: 3px;
@@ -119,7 +106,7 @@ body {
       display: none;
       content: '';
     }
-    
+
     &[open] {
       padding-bottom: 16px;
 
@@ -133,7 +120,99 @@ body {
           transform: rotate(180deg);
         }
       }
-    } 
+    }
+  }
+
+  &__picture {
+    position: absolute;
+    top: -108px;
+    left: 16px;
+
+    &--mobile {
+      filter: drop-shadow(0px 30px 0 #f0f0fc);
+    }
+
+    &--desktop {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: 960px) {
+    max-width: 920px;
+    min-height: 509px;
+    padding: 70px 96px 44px;
+    margin-top: 0;
+
+    &__contents {
+      margin-left: auto;
+      max-width: 350px;
+    }
+
+    &__title {
+      margin-bottom: 34px;
+      text-align: left;
+    }
+
+    &__item {
+      margin-bottom: 18px;
+    }
+
+    summary {
+      font-size: 1.4rem;
+
+      &:hover {
+        color: var(--soft-red);
+      }
+
+      &::after {
+        right: 14px;
+        top: 4px;
+      }
+    }
+
+    &__item[open] summary {
+      &:hover {
+        color: var(--vdark-bland-blue);
+      }
+    }
+
+    &__picture {
+      height: calc(100% - 70px);
+      left: 0;
+      top: 70px;
+
+      border-radius: 23px;
+
+      overflow: hidden;
+
+      &--mobile {
+        display: none;
+      }
+
+      &--desktop {
+        display: initial;
+        position: relative;
+        left: -84px;
+        filter: drop-shadow(0 85px 0 #f0f0fc) drop-shadow(-120px 68px 0 #f0f0fc);
+      }
+    }
+
+    &::after {
+      background-image: url('../images/illustration-box-desktop.svg');
+      position: absolute;
+      content: ' ';
+      width: 200px;
+      height: 170px;
+      top: 204px;
+      left: -93px;
+      z-index: 10;
+      overflow: visible;
+
+      filter: drop-shadow(0 20px 10px rgba(black, 0.2));
+    }
+
+    // TODO: Box moving as a Summary being hovered over
+    // Probably will need to move Box icon into its own element
   }
 }
 
@@ -150,7 +229,7 @@ body {
   letter-spacing: 0.8px;
   color: snow;
 
-  background-color: rgba(#000, .6);
+  background-color: rgba(#000, 0.6);
   a {
     color: snow;
     &:hover {
