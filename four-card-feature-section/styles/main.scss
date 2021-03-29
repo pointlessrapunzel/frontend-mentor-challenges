@@ -1,0 +1,202 @@
+@use './helpers/reset';
+@use './helpers/fonts';
+$mq-desktop: 1200px;
+
+:root {
+  --clr-red: hsl(0, 78%, 62%);
+  --clr-cyan: hsl(180, 62%, 55%);
+  --clr-orange: hsl(34, 97%, 64%);
+  --clr-blue: hsl(212, 86%, 64%);
+
+  --clr-vdark-blue: hsl(234, 12%, 34%);
+  --clr-grayish-blue: hsl(229, 6%, 66%);
+  --clr-vlight-gray: hsl(0, 0%, 98%);
+
+  --clr-card-shadow: #d8e2ee;
+}
+
+html {
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--clr-vdark-blue);
+}
+
+.page-wrapper {
+  padding: 85px 32px 0;
+  max-width: 1110px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (min-width: $mq-desktop) {
+    padding: 80px 0 0;
+  }
+}
+
+.lead-text {
+  text-align: center;
+  margin-bottom: 75px;
+  max-width: 81ch;
+
+  .title {
+    margin: 0 0 14px;
+    font-size: 2.3rem;
+    font-weight: 200;
+    letter-spacing: 0.6px;
+    line-height: 1.54;
+
+    &--bold {
+      font-weight: 600;
+      font-size: 2.4rem;
+      letter-spacing: 0.2px;
+    }
+  }
+
+  p {
+    font-size: 1.5rem;
+    margin: 0;
+    line-height: 1.7;
+    letter-spacing: 0.1px;
+    color: var(--clr-grayish-blue);
+  }
+
+  @media screen and (min-width: $mq-desktop) {
+    margin-bottom: 64px;
+
+    .title {
+      font-size: 3.5rem;
+      letter-spacing: 0.7px;
+      line-height: 1.44;
+      margin-bottom: 16px;
+
+      &--bold {
+        font-size: 3.5rem;
+        letter-spacing: 0.8px;
+      }
+    }
+  }
+}
+
+.cards {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+
+  @media screen and (min-width: $mq-desktop) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+
+    gap: 30px;
+  }
+}
+
+@mixin card-icon($name) {
+  --icon: url('../images/icon-#{$name}.svg');
+}
+
+.card {
+  @include card-icon('supervisor');
+  --clr-border-top: var(--clr-cyan);
+  max-width: 351px;
+  min-height: 222px;
+  padding: 28px;
+  box-shadow: 0 14px 25px var(--clr-card-shadow);
+  border-top: 4px solid var(--clr-border-top);
+  border-radius: 5px;
+
+  background: bottom 28px right 28px var(--icon) no-repeat;
+  background-size: 57px;
+
+  &__title {
+    font-size: 2rem;
+    line-height: 1;
+    margin: 0 0 7px;
+  }
+
+  &__text {
+    margin: 0;
+    font-size: 1.2rem;
+    line-height: 2;
+    color: var(--clr-grayish-blue);
+    letter-spacing: 0.6px;
+  }
+
+  &--supervisor {
+    --clr-border-top: var(--clr-cyan);
+  }
+
+  &--team-builder {
+    @include card-icon('team-builder');
+    --clr-border-top: var(--clr-red);
+  }
+
+  &--karma {
+    @include card-icon('karma');
+    --clr-border-top: var(--clr-orange);
+  }
+
+  &--calculator {
+    @include card-icon('calculator');
+    --clr-border-top: var(--clr-blue);
+  }
+
+  transition: transform 0.5s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  @media screen and (min-width: $mq-desktop) {
+    min-height: 250px;
+    padding: 32px;
+    background-size: 64px;
+    background-position: bottom 32px right 32px;
+
+    &__title {
+      margin-bottom: 12px;
+    }
+
+    &--supervisor {
+      grid-row: 2 / 4;
+    }
+
+    &--team-builder {
+      grid-column: 2;
+      grid-row: 1 / 3;
+    }
+
+    &--karma {
+      grid-column: 2;
+      grid-row: 3 / 5;
+    }
+
+    &--calculator {
+      grid-column: 3;
+      grid-row: 2 / 4;
+    }
+  }
+}
+
+footer {
+  margin-top: 20px;
+  width: 100%;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+
+  a {
+    color: currentColor;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      opacity: 0.8;
+    }
+  }
+}
