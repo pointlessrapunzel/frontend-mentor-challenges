@@ -1,0 +1,137 @@
+@use './helpers/reset';
+@use './helpers/fonts';
+@use './helpers/mixins' as mix;
+
+$mq-desktop: 900px;
+
+:root {
+  --ff-primary: 'Lexend Deca', sans-serif;
+  --ff-accent: 'Big Shoulders Display', cursive;
+
+  --clr-bright-orange: hsl(31, 77%, 52%);
+  --clr-dark-cyan: hsl(184, 100%, 22%);
+  --clr-very-dark-cyan: hsl(179, 100%, 13%);
+
+  --clr-transparent-white: hsla(0, 0%, 100%, 0.75);
+  --clr-very-light-gray: hsl(0, 0%, 95%);
+}
+
+html {
+  font-family: var(--ff-primary);
+}
+
+body {
+  @include mix.flex-column-center();
+  min-height: 100vh;
+  background: var(--clr-very-light-gray);
+}
+
+.page-wrapper {
+  @include mix.flex-column-center();
+  padding: 88px 24px;
+  flex-grow: 1;
+}
+
+.card {
+  --bord-radius: 10px;
+  color: var(--clr-transparent-white);
+  max-width: 327px;
+  font-size: 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+
+  &__column {
+    --bg-clr: none;
+    background-color: var(--bg-clr);
+    padding: 48px;
+
+    &:first-child {
+      --bg-clr: var(--clr-bright-orange);
+      border-top-left-radius: var(--bord-radius);
+      border-top-right-radius: var(--bord-radius);
+    }
+
+    &:nth-child(2n) {
+      --bg-clr: var(--clr-dark-cyan);
+    }
+
+    &:nth-child(n + 3) {
+      --bg-clr: var(--clr-very-dark-cyan);
+    }
+
+    &:nth-child(4n) {
+      --bg-clr: var(--clr-bright-orange);
+    }
+
+    &:last-child {
+      border-bottom-left-radius: var(--bord-radius);
+      border-bottom-right-radius: var(--bord-radius);
+    }
+  }
+
+  &__title {
+    color: var(--clr-very-light-gray);
+    font-family: var(--ff-accent);
+    font-weight: 700;
+    font-size: 3.2rem;
+    line-height: 1;
+    margin: 40px 0;
+  }
+
+  &__text {
+    line-height: 1.5;
+    margin-bottom: 26px;
+  }
+
+  &__btn {
+    background: var(--clr-very-light-gray);
+    color: var(--bg-clr);
+    padding: 0.733em 2.028em;
+    border: 2px solid transparent;
+    border-radius: 100px;
+    cursor: pointer;
+
+    --tsp: 0.3s; // transition speed
+    transition: color var(--tsp), border-color var(--tsp),
+      background-color var(--tsp);
+
+    &:hover {
+      border-color: var(--clr-very-light-gray);
+      color: var(--clr-very-light-gray);
+      background: var(--bg-clr);
+    }
+  }
+
+  @media screen and (min-width: $mq-desktop) {
+    flex-direction: row;
+
+    &__column {
+      &:first-child {
+        border-top-left-radius: var(--bord-radius);
+        border-top-right-radius: 0;
+        border-bottom-left-radius: var(--bord-radius);
+      }
+
+      &:last-child {
+        border-top-right-radius: var(--bord-radius);
+        border-bottom-right-radius: var(--bord-radius);
+        border-bottom-left-radius: 0;
+      }
+    }
+  }
+}
+
+footer {
+  padding: 1em;
+
+  a {
+    text-decoration: none;
+    color: currentColor;
+
+    &:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+  }
+}
